@@ -50,7 +50,7 @@ export const App = () => {
               }
             />
             <Route
-              path="/singup"
+              path="/signup"
               element={
                 <PublicRoute>
                   <RegisterPage />
@@ -58,7 +58,7 @@ export const App = () => {
               }
             />
             <Route
-              path="contacts"
+              path="/contacts"
               element={
                 <ProtectedRoute isLoggedIn={isLoggedIn}>
                   <Contacts />

@@ -13,7 +13,7 @@ function LoginPage() {
   const dispatch = useDispatch();
 
   const handleSingupNavigate = () => {
-    navigate('/singup');
+    navigate('/signup');
   };
 
   const handleLogin = () => {
