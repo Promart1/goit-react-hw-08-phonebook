@@ -9,7 +9,8 @@ import {
 } from 'redux/selectors';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { deleteContacts } from 'redux/operations';
-
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export const ContactList = () => {
   const dispatch = useDispatch();
@@ -39,13 +40,21 @@ export const ContactList = () => {
       {filteredContacts.map(contact => (
         <li className={css.item} key={contact.id}>
           {contact.name}: {contact.number}
-          <button
+          {/* <button
             className={css.button}
             type="button"
             onClick={() => deleteContactHandler(contact.id)}
           >
             delete
-          </button>
+          </button> */}
+          <IconButton
+            aria-label="delete"
+            size="small"
+            type="button"
+            onClick={() => deleteContactHandler(contact.id)}
+          >
+            <DeleteIcon fontSize="small" />
+          </IconButton>
         </li>
       ))}
     </ul>

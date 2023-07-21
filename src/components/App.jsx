@@ -3,7 +3,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from 'redux/operations';
 import { useAuth } from 'hooks';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import LoginPage from './page/login/LoginPage';
 import RegisterPage from './page/register/RegisterPage';
 import ProtectedRoute from 'routes/ProtectedRoute';
@@ -17,7 +17,7 @@ import PublicRoute from 'routes/PublicRoute';
 
 export const App = () => {
   const { isLoggedIn } = useAuth();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const dispatch = useDispatch();
   // const error = useSelector(selectError);
   const isRefreshing = useSelector(selectIsRefreshing);
@@ -26,11 +26,11 @@ export const App = () => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate('/');
-    }
-  }, [isLoggedIn, navigate]);
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     navigate('/');
+  //   }
+  // }, [isLoggedIn, navigate]);
 
   if (isRefreshing) {
     return <ClipLoader color="#36d7b7" size={50} />;
@@ -65,8 +65,8 @@ export const App = () => {
                 </ProtectedRoute>
               }
             />
-            <Route path="*" element={<NotFound />} />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       )}
     </>

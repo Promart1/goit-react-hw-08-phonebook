@@ -1,22 +1,19 @@
-import AuthNav from 'components/AuthNav/AuthNav';
-import UserMenu from 'components/UserMenu/UserMenu';
-import { useSelector } from 'react-redux';
-import { NavLink, Outlet } from 'react-router-dom';
-import { selectsIsLoggedIn } from 'redux/selectors';
+import { AppBarCont } from 'components/AppBar/AppBar';
+import { Loader } from 'components/Loader';
+import { Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
 
-export default function Layout() {
-  const isLoggedIn = useSelector(selectsIsLoggedIn);
+const Layout = () => {
+  // const isLoggedIn = useSelector(selectsIsLoggedIn);
 
   return (
-    <nav>
-      <div>
-        <NavLink to="/">Home</NavLink>
-        {isLoggedIn && <NavLink to="/contacts">Contacts</NavLink>}
-      </div>
-      {isLoggedIn ? <UserMenu /> : <AuthNav />}
-      <div>
+    <div>
+      <AppBarCont />{' '}
+      <Suspense fallback={<Loader />}>
         <Outlet />
-      </div>
-    </nav>
+      </Suspense>
+    </div>
   );
-}
+};
+
+export default Layout;

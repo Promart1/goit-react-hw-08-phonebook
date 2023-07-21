@@ -1,22 +1,38 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUserName } from 'redux/selectors';
-import { BiSolidUser } from 'react-icons/bi';
-import { LuLogOut } from 'react-icons/lu';
 import { logout } from 'redux/operations';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { Box, Typography } from '@mui/material';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 export default function UserMenu() {
   const userName = useSelector(selectUserName);
   const dispatch = useDispatch();
 
   return (
-    <>
-      <p>
-        <BiSolidUser />
+    <Box
+      sx={{
+        display: 'flex',
+        alignSelf: 'center',
+        gap: '16px',
+      }}
+    >
+      <Typography
+        variant="h8"
+        sx={{
+          color: '#ffffff',
+          display: 'flex',
+          alignItem: 'center',
+          gap: '5px',
+          ml: '500px',
+        }}
+      >
+        <AccountCircleIcon />
         {userName}
-      </p>
+      </Typography>
       <button type="button" onClick={() => dispatch(logout())}>
-        <LuLogOut />
+        <LogoutIcon sx={{ fontSize: 'medium' }} />
       </button>
-    </>
+    </Box>
   );
 }
