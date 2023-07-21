@@ -28,11 +28,12 @@ export const Contacts = () => {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
+          margin: 'auto',
           height: '100vh',
           gap: '16px',
         }}
       >
-        <Typography variant="h3" sx={{ color: '#031a4bf8' }}>
+        <Typography variant="h3" sx={{ color: '#031a4bf8', marginTop: '60px' }}>
           Phonebook
         </Typography>
         <Form />

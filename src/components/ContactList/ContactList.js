@@ -7,10 +7,10 @@ import {
   selectFilter,
   selectIsLoading,
 } from 'redux/selectors';
-import ClipLoader from 'react-spinners/ClipLoader';
 import { deleteContacts } from 'redux/operations';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { Loader } from 'components/Loader';
 
 export const ContactList = () => {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ export const ContactList = () => {
   const contacts = useSelector(selectContacts);
 
   if (isLoading) {
-    return <ClipLoader color="#36d7b7" size={50} />;
+    return <Loader />;
   }
 
   if (error) {

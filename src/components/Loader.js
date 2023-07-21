@@ -9,6 +9,6 @@ export const Loader = () => (
     wrapperStyle={{}}
     wrapperClass="comment-wrapper"
     color="#fff"
-    backgroundColor="#F4442E"
+    backgroundColor="#49494959"
   />
 );
