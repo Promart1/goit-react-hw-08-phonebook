@@ -1,7 +1,7 @@
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 import { createSlice } from '@reduxjs/toolkit';
-import { logIn, logout, refreshUser, register } from './operations';
+import { logIn, logout, refreshUser, register } from '../AuthR/AuthOperation';
 
 const initialState = {
   user: { name: null, email: null },

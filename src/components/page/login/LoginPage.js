@@ -1,18 +1,12 @@
-
-
 import React, { useState } from 'react';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { logIn } from 'redux/operations';
 import { useAuth } from 'hooks';
 import { Box } from '@mui/material';
-const containerStyle = {
-  backgroundImage:
-    'url(https://foni.club/uploads/posts/2023-01/thumbs/1674331302_foni-club-p-fon-dlya-votsap-8.png)',
-};
+import { logIn } from 'redux/AuthR/AuthOperation';
 
 function LoginPage() {
   const [password, setPassword] = useState('');
@@ -26,12 +20,19 @@ function LoginPage() {
     navigate('/signup');
   };
 
-  const handleLogin = () => {
+  const handleLogin = event => {
+    event.preventDefault();
     dispatch(logIn({ email, password }));
+    reset();
+  };
+
+  const reset = () => {
+    setEmail('');
+    setPassword('');
   };
 
   return (
-    <div style={containerStyle}>
+    <form onSubmit={handleLogin}>
       <Box
         sx={{
           display: 'flex',
@@ -67,7 +68,7 @@ function LoginPage() {
         <Button
           variant="contained"
           color="primary"
-          onClick={handleLogin}
+          type="submit"
           sx={{ bgcolor: '#031a4bf8' }}
         >
           Login
@@ -80,7 +81,7 @@ function LoginPage() {
           Go to register page!
         </Button>
       </Box>
-    </div>
+    </form>
   );
 }
 

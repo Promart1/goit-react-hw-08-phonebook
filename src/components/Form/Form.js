@@ -3,7 +3,7 @@ import css from '../Form/Form.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { addContacts } from 'redux/operations';
+import { addContacts } from 'redux/ContactsR/operations';
 
 export const Form = () => {
   const [name, setName] = useState('');

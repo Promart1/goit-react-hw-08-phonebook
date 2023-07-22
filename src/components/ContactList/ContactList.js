@@ -7,7 +7,7 @@ import {
   selectFilter,
   selectIsLoading,
 } from 'redux/selectors';
-import { deleteContacts } from 'redux/operations';
+import { deleteContacts } from 'redux/ContactsR/operations';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Loader } from 'components/Loader';

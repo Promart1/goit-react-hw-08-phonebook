@@ -4,35 +4,37 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { useDispatch } from 'react-redux';
-import { register } from 'redux/operations';
 import PasswordStrengthBar from 'react-password-strength-bar';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from 'hooks';
-
-const containerStyle = {
-  backgroundImage:
-    'url(https://foni.club/uploads/posts/2023-01/thumbs/1674331302_foni-club-p-fon-dlya-votsap-8.png)',
-};
+import { register } from 'redux/AuthR/AuthOperation';
 
 function RegisterPage() {
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
   const [name, setName] = useState('');
-
-  const navigate = useNavigate();
-  const { isAuthError } = useAuth();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const dispatch = useDispatch();
+  const { isAuthError } = useAuth();
+  const navigate = useNavigate();
 
   const handleLoginNavigate = () => {
     navigate('/login');
   };
 
-  const handleSignup = () => {
-    dispatch(register({ email, password, name }));
+  const handleSubmit = event => {
+    event.preventDefault();
+    dispatch(register({ name, email, password }));
+    reset();
+  };
+
+  const reset = () => {
+    setName('');
+    setEmail('');
+    setPassword('');
   };
 
   return (
-    <div style={containerStyle}>
+    <form onSubmit={handleSubmit}>
       <Box
         sx={{
           display: 'flex',
@@ -52,7 +54,10 @@ function RegisterPage() {
           variant="outlined"
           value={name}
           onChange={event => setName(event.target.value)}
-          sx={{ bgcolor: '#49494959' }}
+          sx={{
+            bgcolor: '#49494959',
+            border: '1px solid rgba(255, 255, 255, 0.5)',
+          }}
         />
         <TextField
           type="email"
@@ -76,12 +81,12 @@ function RegisterPage() {
           </Typography>
         )}
         <div style={{ width: 150 }}>
-          <PasswordStrengthBar password={password} />
+          <PasswordStrengthBar password={password} shortScoreWord="" />
         </div>
         <Button
           variant="contained"
           color="primary"
-          onClick={handleSignup}
+          type="submit"
           sx={{ bgcolor: '#031a4bf8' }}
         >
           Sign up
@@ -94,7 +99,7 @@ function RegisterPage() {
           Go to login!
         </Button>
       </Box>
-    </div>
+    </form>
   );
 }
 

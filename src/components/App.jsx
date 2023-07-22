@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { refreshUser } from 'redux/operations';
+
 import { useAuth } from 'hooks';
 import { Route, Routes } from 'react-router-dom';
 import LoginPage from './page/login/LoginPage';
@@ -14,6 +14,7 @@ import { selectIsRefreshing } from 'redux/selectors';
 import Layout from './Layout/Layout';
 import Home from './page/home/Home';
 import PublicRoute from 'routes/PublicRoute';
+import { refreshUser } from 'redux/AuthR/AuthOperation';
 
 export const App = () => {
   const { isLoggedIn } = useAuth();

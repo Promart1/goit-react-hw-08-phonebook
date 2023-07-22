@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUserName } from 'redux/selectors';
-import { logout } from 'redux/operations';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Box, Typography } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { logout } from 'redux/AuthR/AuthOperation';
 
 export default function UserMenu() {
   const userName = useSelector(selectUserName);

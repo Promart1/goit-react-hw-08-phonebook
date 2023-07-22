@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch } from 'react-redux';
-import { fetchContacts } from 'redux/operations';
+import { fetchContacts } from 'redux/ContactsR/operations';
 import { Filter } from 'components/Filter/Filter';
 import { Form } from 'components/Form/Form';
 import { ContactList } from 'components/ContactList/ContactList';
